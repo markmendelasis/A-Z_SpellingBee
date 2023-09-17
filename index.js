@@ -1,13 +1,50 @@
+document.getElementById("spellSpace").addEventListener("keypress", function(event) {
+  // Check if the Enter key (key code 13) was pressed
+  if (event.key === "Enter") {
+      // Prevent the default behavior of the Enter key (page refresh)
+      event.preventDefault();
+
+      // Submit the form or perform any other desired action
+      document.getElementById("submitButton").click();
+
+  }
+});
+
+
+var score = 0;
+
+
+var welcomeAudio = document.getElementById("welcomeAudio");
+
+
+
+
+var startTheGameAudio = document.getElementById("startTheGameAudio");
+
+
+var start = document.querySelector("body > div:nth-child(2) > div > div > div.col-xl-9.col.col-lg-12 > div > button");
+
+start.addEventListener("click", function(){
+  startTheGameAudio.play();
+  document.getElementById("willOpen").style.display="block";
+  var startRemove = document.getElementById("start");
+  startRemove.remove();
+
+});
+
+
+
 
 var closeTheModal = document.querySelector("#openModal > div > div > div.modal-header > button");
 var correctAudio = document.querySelector("#correctAudio");
 var wrongAudio = document.querySelector("#wrongAudio");
 var spellTheAudio = document.getElementById("myAudio");
+var celebrateAudio = document.getElementById("celebrateAudio");
+
 
 function playAudio() {
   spellTheAudio.play();
 }
-
 
 // Get all the letter buttons by their class name
 var letterButtons = document.querySelectorAll(".letterImg");
@@ -15,30 +52,31 @@ var letterButtons = document.querySelectorAll(".letterImg");
 // Attach a click event listener to each button
 letterButtons.forEach(button => {
   button.addEventListener("click", function() {
+
     var letterClicked = this.id; // Get the id attribute of the clicked button
+
 
     switch(letterClicked){
       case "A":
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/achievement.mp3"
         imgOfButton = document.querySelector("#A");
         spellingOfAudio = "achievement";
-        checkTheSpell();
+        // checkTheSpell();
         
-
       break;
 
       case "B":
          var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/bureaucracy.mp3";
          imgOfButton = document.querySelector("#B");
          spellingOfAudio = "bureaucracy";
-         checkTheSpell();
+        //  checkTheSpell();
       break;
 
       case "C":  
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/ceremonious.mp3";
         imgOfButton = document.querySelector("#C");
         spellingOfAudio = "ceremonious";
-        checkTheSpell();
+        // checkTheSpell();
       break;
 
       case "D":  
@@ -46,7 +84,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/dilemma.mp3";
         imgOfButton = document.querySelector("#D");
         spellingOfAudio = "dilemma";
-        checkTheSpell();
+        // checkTheSpell();
       break;
       
       case "E":
@@ -54,7 +92,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/endeavour.mp3";
         imgOfButton = document.querySelector("#E");
         spellingOfAudio = "endeavour";
-        checkTheSpell();
+        // checkTheSpell();
       break;
       
       case "F":
@@ -62,7 +100,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/fatuous.mp3";
         imgOfButton = document.querySelector("#F");
         spellingOfAudio = "fatuous";
-        checkTheSpell();
+        // checkTheSpell();
       break;
 
       case "G":
@@ -70,7 +108,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/genre.mp3";
         imgOfButton = document.querySelector("#G");
         spellingOfAudio = "genre";
-        checkTheSpell();
+        // checkTheSpell();
       break;        
 
       case "H":
@@ -78,7 +116,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/harbinger.mp3";
         imgOfButton = document.querySelector("#H");
         spellingOfAudio = "harbinger";
-        checkTheSpell();
+        // checkTheSpell();
       break;   
 
       case "I":
@@ -86,7 +124,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/idiosyncrasy.mp3";
         imgOfButton = document.querySelector("#I");
         spellingOfAudio = "idiosyncrasy";
-        checkTheSpell();
+        // checkTheSpell();
       break; 
     
       case "J":
@@ -94,7 +132,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/juxtapose.mp3";
         imgOfButton = document.querySelector("#J");
         spellingOfAudio = "juxtapose";
-        checkTheSpell();
+        // checkTheSpell();
       break; 
 
       case "K":
@@ -102,7 +140,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/kinship.mp3";
         imgOfButton = document.querySelector("#K");
         spellingOfAudio = "kinship";
-        checkTheSpell();
+        // checkTheSpell();
       break;
 
       case "L":
@@ -110,7 +148,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/labyrinth.mp3";
         imgOfButton = document.querySelector("#L");
         spellingOfAudio = "labyrinth";
-        checkTheSpell();
+        // checkTheSpell();
       break;        
 
       case "M":
@@ -118,7 +156,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/manoeuvre.mp3";
         imgOfButton = document.querySelector("#M");
         spellingOfAudio = "manoeuvre";
-        checkTheSpell();
+        // checkTheSpell();
       break;   
 
       case "N":
@@ -126,7 +164,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/niche.mp3";
         imgOfButton = document.querySelector("#N");
         spellingOfAudio = "niche";
-        checkTheSpell();
+        // checkTheSpell();
       break; 
     
       case "O":
@@ -134,7 +172,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/omniscient.mp3";
         imgOfButton = document.querySelector("#O");
         spellingOfAudio = "omniscient";
-        checkTheSpell();
+        // checkTheSpell();
       break;         
 
       case "P":
@@ -142,7 +180,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/pseudonym.mp3";
         imgOfButton = document.querySelector("#P");
         spellingOfAudio = "pseudonym";
-        checkTheSpell();
+        // checkTheSpell();
       break;        
 
       case "Q":
@@ -150,7 +188,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/quintessence.mp3";
         imgOfButton = document.querySelector("#Q");
         spellingOfAudio = "quintessence";
-        checkTheSpell();
+        // checkTheSpell();
       break;   
 
       case "R":
@@ -158,7 +196,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/renaissance.mp3";
         imgOfButton = document.querySelector("#R");
         spellingOfAudio = "renaissance";
-        checkTheSpell();
+        // checkTheSpell();
       break; 
     
       case "S":
@@ -166,7 +204,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/solace.mp3";
         imgOfButton = document.querySelector("#S");
         spellingOfAudio = "solace";
-        checkTheSpell();
+        // checkTheSpell();
       break;
 
       case "T":
@@ -174,7 +212,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/threshold.mp3";
         imgOfButton = document.querySelector("#T");
         spellingOfAudio = "threshold";
-        checkTheSpell();
+        // checkTheSpell();
       break;   
 
       case "U":
@@ -182,7 +220,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/ubiquitous.mp3";
         imgOfButton = document.querySelector("#U");
         spellingOfAudio = "ubiquitous";
-        checkTheSpell();
+        // checkTheSpell();
       break; 
     
       case "V":
@@ -190,7 +228,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/vigorous.mp3";
         imgOfButton = document.querySelector("#V");
         spellingOfAudio = "vigorous";
-        checkTheSpell();
+        // checkTheSpell();
       break;
 
       case "W":
@@ -198,7 +236,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/wardrobe.mp3";
         imgOfButton = document.querySelector("#W");
         spellingOfAudio = "wardrobe";
-        checkTheSpell();
+        // checkTheSpell();
       break;        
 
       case "X":
@@ -206,7 +244,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/xylophone.mp3";
         imgOfButton = document.querySelector("#X");
         spellingOfAudio = "xylophone";
-        checkTheSpell();
+        // checkTheSpell();
       break;   
 
       case "Y":
@@ -214,7 +252,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/yacht.mp3";
         imgOfButton = document.querySelector("#Y");
         spellingOfAudio = "yacht";
-        checkTheSpell();
+        // checkTheSpell();
       break; 
     
       case "Z":
@@ -222,7 +260,7 @@ letterButtons.forEach(button => {
         var spellTheAudio = document.querySelector("#myAudio").src="spellTheAudio/zephyr.mp3";
         imgOfButton = document.querySelector("#Z");
         spellingOfAudio = "zephyr";
-        checkTheSpell();
+        // checkTheSpell();
       break;        
 
         default:
@@ -235,7 +273,10 @@ letterButtons.forEach(button => {
 });
 
 
-function checkTheSpell(){
+
+
+
+
 
   var inputField = document.getElementById("spellSpace");
   var submitButton = document.getElementById("submitButton");
@@ -250,6 +291,18 @@ function checkTheSpell(){
         correctAudio.play();
         imgOfButton.style.visibility="hidden";
         closeTheModal.click();
+        score++;
+        
+        
+
+        if (score == 26) {
+          celebrateAudio.play();
+          document.querySelector("#willOpen").style.display="none";
+          document.querySelector("#congratulations").style.display="block";
+
+        } else{
+          
+        }
         
 
     } else {
@@ -261,8 +314,6 @@ function checkTheSpell(){
 
 });
 
-
-}
 
 
 
