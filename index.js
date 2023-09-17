@@ -295,7 +295,7 @@ letterButtons.forEach(button => {
         
         
 
-        if (score == 1) {
+        if (score == 26) {
           celebrateAudio.play();
           document.querySelector("#willOpen").style.display="none";
           document.querySelector("#congratulations").style.display="block";
