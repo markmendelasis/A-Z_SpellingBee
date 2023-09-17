@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A-Z Spelling Bee</title>
+  <title>Spelling Bee</title>
   <link rel="icon" type="image/png" sizes="16x16" href="Icon/favicon.ico">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -14,17 +14,21 @@
 </head>
 
 <body>
+  
   <div class="container-fluid text-center">
     <div class="col-xl-9">
       <img class="img-fluid" src="Resources/header.gif" alt="a-zgif">
     </div>
     <div class="col-xl-3">
-
+      <!-- <div id="scoreDisplay">
+        Score: <span id="score">0</span>
+      </div> -->
     </div>
   </div>
+<div>
   <div class="container-fluid">
     <div  class="row text-center m-2 d-flex mb-5" >
-      <div class="col-xl-9 col col-lg-12">
+      <div class="col-xl-9 col col-lg-12" id="willOpen" style="display: none;">
         <button type="button" data-bs-toggle="modal" data-bs-target="#openModal" class="btn letterImg p-0 m-0" id="A"><img class="p-1 letter" src="Letters/A.png" alt="A"></button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#openModal" class="btn letterImg p-0 m-0" id="B"><img class="p-1 letter" src="Letters/B.png" alt="B"></button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#openModal" class="btn letterImg p-0 m-0" id="C"><img class="p-1 letter" src="Letters/C.png" alt="C"></button>
@@ -52,13 +56,24 @@
         <button type="button" data-bs-toggle="modal" data-bs-target="#openModal" class="btn letterImg p-0 m-0" id="Y"><img class="p-1 letter" src="Letters/Y.png" alt="Y"></button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#openModal" class="btn letterImg p-0 m-0" id="Z"><img class="p-1 letter" src="Letters/Z.png" alt="Z"></button>
       </div>
+      <div class="col-xl-9 col col-lg-12" id="congratulations" style="display: none;" >
+        <img src="https://media.tenor.com/HHPMFMlwwMIAAAAi/congratulations-congrats.gif" alt="congratulations">
+        <h1 class="text-warning">Congratulations! Thank You For Playing! 💛</h1>
+      </div>
+
+      <div class="col-xl-9 col col-lg-12" id="start"  >
+        <div>
+          <button class="btn mt-5"><img class="start" src="Resources/start.png" alt="start"></button>
+        </div>
+      </div>
       <div class="border border-dark col-xl-3 col-lg-0 pt-3 mt-3 mb-3">
         <h3 class="text-danger">Tutorial</h3>
         <p class="text-justify">There are 26 Letters in the alphabet. These letters contains a challenging word to
-          spell that starts with itself. Just click the letter of your choice. Click "PLAY ME" and listen carefully. Put the correct spelling in the blank and click Submit</p>
+          spell that starts with itself. Just click the letter of your choice. Click "PLAY ME" and listen carefully. Put the correct spelling in the blank and click Submit. Click <img class="startTutorial" src="Resources/start.png" alt="startTutorial"> to Begin.</p>
       </div>
     </div>
   </div>
+</div>
 
   
   <div class="modal fade" id="openModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,11 +88,14 @@
         <div class="modal-body">
           <form>
             <div class="mb-3 text-center">
+              <audio id="startTheGameAudio" autoplay><source src="Resources/decidemp3-14575_from_pixabay.com.mp3" type="audio/mpeg"></audio>
+              <audio id="welcomeAudio"><source src="Resources/cute_music_from_pixabay.com.mp3" type="audio/mpeg"></audio>
               <audio id="wrongAudio"><source src="Resources/wrong_from_pixabay.com.mp3" type="audio/mpeg"></audio>
               <audio id="correctAudio"><source src="Resources/correct_from_pixabay.com.mp3" type="audio/mpeg"></audio>
               <audio id="myAudio"><source src="spellTheAudio/achievement.mp3" type="audio/mpeg"></audio>
+              <audio id="celebrateAudio"><source src="Resources/taratata-6264_from_pixabay.com.mp3" type="audio/mpeg"></audio>
               <button onclick="playAudio()" type="button" class="btn btn-lg btn-warning mb-3 text-light playMe">PLAY ME</button>
-              <input oninput="this.value = this.value.toLowerCase()" type="text" class="form-control" id="spellSpace" placeholder="Put your answer here...">
+              <input onfocus="this.value=''" oninput="this.value = this.value.toLowerCase()" type="text" class="form-control" id="spellSpace" placeholder="Put your answer here...">
             </div>
           </form>
         </div>
